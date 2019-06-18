@@ -11,5 +11,8 @@ You can deploy a compatible instance from Dataiku for Dataproc solution on Googl
 
 ## Changelog
 
-**Version 1.0.0  (2018-02-01)**
+**Version 1.0.1  (2019-06-18)**
+* Version bump for publication compliance
+
+**Version 1.0.0  (2019-02-01)**
 * first version compatible with solution Dataiku for Dataproc
