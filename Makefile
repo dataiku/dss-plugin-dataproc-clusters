@@ -6,5 +6,3 @@ plugin:
 	rm -rf dist
 	mkdir dist
 	zip -r dist/dss-plugin-${PLUGIN_ID}-${PLUGIN_VERSION}.zip code-env plugin.json python-clusters python-lib python-runnables
-
-include ../Makefile.inc
