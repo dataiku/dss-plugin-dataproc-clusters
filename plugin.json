@@ -8,6 +8,6 @@
         "icon": "icon-cloud",
         "licenseInfo": "Apache Software License",
         "url": "https://www.dataiku.com/dss/plugins/info/dataproc-clusters.html",
-        "tags": ["Clusters", "Google"]
+        "tags": ["Cloud", "Google"]
     }
 }
