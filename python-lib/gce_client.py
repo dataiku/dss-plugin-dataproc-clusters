@@ -204,12 +204,15 @@ class DataProcClient(AbstractGCloudClient):
         return ValueError("cluster {} couldn't reach state {} in  {} minutes ".format(clusterName,status,str(timeout)))
 
 
-
+    
     def getApiEndpoint(self):
-        return 'https://www.googleapis.com/compute/{}/projects/{}/zones/{}'.format(
-                self.apiVersion,self.projectId, 
-                self.zone
-                )
+        if self.zone.lower().startswith("http"):
+            return self.zone
+        else:
+            return 'https://www.googleapis.com/compute/{}/projects/{}/zones/{}'.format(
+                    self.apiVersion,self.projectId, 
+                    self.zone
+                    )
 
 
 
