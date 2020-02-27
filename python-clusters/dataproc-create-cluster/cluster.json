@@ -30,20 +30,54 @@
           "type": "SEPARATOR",
           "label": "Network"
         },
-
+        {
+            "name": "gcloudUseCustomGceConfig",
+            "label": "Use custom cconfig",
+            "description": "Manually set custom gceClusterConfig",
+            "type": "BOOLEAN",
+            "defaultValue": false
+        },
+        {
+            "name": "gcloudCustomGceConfig",
+            "label": "Manual cluster config",
+            "description": "Manually set zone region subnets using json and everything in gceClusterConfig",
+            "type": "TEXTAREA",
+            "mandatory" : true,
+            "defaultValue": "{}",
+            "visibilityCondition": "model.gcloudUseCustomGceConfig"
+        },
         {
             "name" : "gcloudRegionId",
             "label" : "Region",
             "type": "STRING", 
             "mandatory" : true,
-            "defaultValue": "global"
+            "defaultValue": "global",
+            "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
         },
         {
             "name" : "gcloudZoneId",
             "label" : "Zone",
             "type": "STRING", 
             "mandatory" : true,
-            "defaultValue": "us-east1-b"
+            "defaultValue": "us-east1-b",
+            "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
+        },
+        {
+            "name": "gcloudUseCustomSubnet",
+            "label": "Use a custom subnet",
+            "description": "Use a custom subnetwork id (Including Shared VPC subnets)",
+            "type": "BOOLEAN",
+            "defaultValue": false,
+            "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
+        },
+        {
+            "name": "gcloudCustomSubnetId",
+            "label": "Subnet",
+            "description": "Set the custom subnet id you whish to use",
+            "type": "STRING",
+            "mandatory": true,
+            "defaultValue" : "YOUR_CUSTOM_SUBNET_ID",
+            "visibilityCondition": "model.gcloudUseCustomSubnet"
         },
         {
             "name" : "tags",
