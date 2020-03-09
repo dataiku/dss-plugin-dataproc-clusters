@@ -63,6 +63,14 @@
             "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
         },
         {
+            "name": "gcloudUseInternalIP",
+            "label": "Force internal IP",
+            "description": "Your Dataproc cluster will only use internal IPs",
+            "type": "BOOLEAN",
+            "defaultValue": true,
+            "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
+        },
+        {
             "name": "gcloudUseCustomSubnet",
             "label": "Use a custom subnet",
             "description": "Use a custom subnetwork id (Including Shared VPC subnets)",
@@ -77,7 +85,7 @@
             "type": "STRING",
             "mandatory": true,
             "defaultValue" : "YOUR_CUSTOM_SUBNET_ID",
-            "visibilityCondition": "model.gcloudUseCustomSubnet"
+            "visibilityCondition": "model.gcloudUseCustomSubnet && model.gcloudUseCustomGceConfig == false"
         },
         {
             "name" : "tags",
