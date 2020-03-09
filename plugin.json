@@ -1,6 +1,6 @@
 {
     "id": "dataproc-clusters",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "meta": {
         "label" : "Dataproc clusters",
         "description": "Dynamically create Dataproc clusters or attach to existing ones.",

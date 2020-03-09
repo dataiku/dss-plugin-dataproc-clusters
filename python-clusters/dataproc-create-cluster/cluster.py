@@ -38,6 +38,20 @@ class MyCluster(Cluster):
         clusterBody = self.client.dump(name)
         self.client.dump(name)
 
+        # handling  subnets and IP configuration
+        if self.config.get("gcloudUseCustomGceConfig"):
+            clusterBody["config"]["gceClusterConfig"] = self.config.get("gcloudCustomGceConfig")
+
+        elif self.config.get("gcloudUseCustomSubnet"):
+            clusterBody["config"]["gceClusterConfig"] = {
+                        'zoneUri': self.config.get("gcloudZoneId"),
+                        "subnetworkUri": self.config.get("gcloudCustomSubnetId"),
+                        "internalIpOnly": self.config.get("gcloudUseInternalIP")
+                    }
+        else:
+            clusterBody["config"]["gceClusterConfig"]["internalIpOnly"] = self.config.get("gcloudUseInternalIP")
+
+
         clusterBody["config"]["masterConfig"]['machineTypeUri'] = self.config.get("masterInstanceType")
         clusterBody["config"]["workerConfig"]['machineTypeUri'] = self.config["slaveInstanceType"]
         clusterBody["config"]["workerConfig"]['numInstances'] = int(self.config["instancesCount"])
