@@ -92,7 +92,8 @@
             "label" : "Additional tags",
             "type" : "STRING",
             "mandatory": false,
-            "description" : "Optional. Comma-separated list of security groups tags"
+            "description" : "Optional. Comma-separated list of security groups tags",
+            "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
         },
         {
           "type": "SEPARATOR",
