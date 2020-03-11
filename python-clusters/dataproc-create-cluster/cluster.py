@@ -32,9 +32,9 @@ class MyCluster(Cluster):
         name = self.cluster_id
         logging.info("starting cluster, name=%s" % (full_name))
 
-        Tags={}
-        for tag in self.config.get("tags", []):
-            Tags[tag["from"]] = tag["to"]
+        netwokTags=[]
+        for tag in self.config.get("tags").split(","):
+            netwokTags.append(tag)
         clusterBody = self.client.dump(name)
         self.client.dump(name)
 
@@ -51,6 +51,17 @@ class MyCluster(Cluster):
         else:
             clusterBody["config"]["gceClusterConfig"]["internalIpOnly"] = self.config.get("gcloudUseInternalIP")
 
+        # set network tags to cluster
+        tagsAsString = self.config.get("tags") 
+        if tagsAsString:
+            netwokTags=[]
+            for tag in tagsAsString.split(","):
+                netwokTags.append(tag)
+            clusterBody["config"]["gceClusterConfig"]["tags"] = netwokTags
+
+
+        clusterBody = self.client.dump(name)
+        self.client.dump(name)
 
         clusterBody["config"]["masterConfig"]['machineTypeUri'] = self.config.get("masterInstanceType")
         clusterBody["config"]["workerConfig"]['machineTypeUri'] = self.config["slaveInstanceType"]

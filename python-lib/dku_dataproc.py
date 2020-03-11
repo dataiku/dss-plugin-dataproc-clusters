@@ -88,6 +88,7 @@ def make_cluster_keys_and_data(client, cluster_id,clusterBody=None, create_user_
            {"key": "spark.hadoop.yarn.resourcemanager.scheduler.address" , "value" :  "%s:8030" % master_ip},
            {"key": "spark.hadoop.hive.metastore.uris" , "value" :  "thrift://%s:9083" % master_ip},
            {"key": "spark.yarn.historyServer.address" , "value" :  "%s:18080" % master_ip },
+           {"key": "spark.yarn.timeline-service.hostname" , "value" :  "%s" % master_ip},
            {"key": "spark.eventLog.dir" , "value" :  "hdfs://%s/user/spark/eventlog" % master_ip },
            {"key": "spark.history.fs.logDirectory" , "value" :  "hdfs://%s/user/spark/eventlog" % master_ip }
            
