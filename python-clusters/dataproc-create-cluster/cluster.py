@@ -32,9 +32,6 @@ class MyCluster(Cluster):
         name = self.cluster_id
         logging.info("starting cluster, name=%s" % (full_name))
 
-        netwokTags=[]
-        for tag in self.config.get("tags").split(","):
-            netwokTags.append(tag)
         clusterBody = self.client.dump(name)
         self.client.dump(name)
 
