@@ -125,7 +125,8 @@ class DataProcClient(AbstractGCloudClient):
                 'config': {
                     'gceClusterConfig': {
                         'zoneUri': self.getApiEndpoint(),
-                        "internalIpOnly": True
+                        'internalIpOnly': True,
+                        'tags': []
                     },
                     'masterConfig': {
                         'numInstances': numberOfMaster,
