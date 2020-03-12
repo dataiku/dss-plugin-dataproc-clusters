@@ -39,19 +39,20 @@ class MyCluster(Cluster):
         if self.config.get("gcloudUseCustomGceConfig"):
             clusterBody["config"]["gceClusterConfig"] = self.config.get("gcloudCustomGceConfig")
 
-        elif self.config.get("gcloudUseCustomSubnet"):
-            clusterBody["config"]["gceClusterConfig"] = {
-                        'zoneUri': self.config.get("gcloudZoneId"),
-                        "subnetworkUri": self.config.get("gcloudCustomSubnetId"),
-                        "internalIpOnly": self.config.get("gcloudUseInternalIP")
-                    }
         else:
-            clusterBody["config"]["gceClusterConfig"]["internalIpOnly"] = self.config.get("gcloudUseInternalIP")
+            if self.config.get("gcloudUseCustomSubnet"):
+                clusterBody["config"]["gceClusterConfig"] = {
+                            'zoneUri': self.config.get("gcloudZoneId"),
+                            "subnetworkUri": self.config.get("gcloudCustomSubnetId"),
+                            "internalIpOnly": self.config.get("gcloudUseInternalIP")
+                        }
+            else:
+                clusterBody["config"]["gceClusterConfig"]["internalIpOnly"] = self.config.get("gcloudUseInternalIP")
 
-        # set network tags to cluster
-        tagsAsString = self.config.get("networkTags") 
-        if tagsAsString:
-            clusterBody["config"]["gceClusterConfig"]["tags"] = tagsAsString.split(",")
+            # set network tags to cluster
+            tagsAsString = self.config.get("gcloudNetworkTags") 
+            if tagsAsString:
+                clusterBody["config"]["gceClusterConfig"]["tags"] = tagsAsString.split(",")
 
 
         clusterBody = self.client.dump(name)
