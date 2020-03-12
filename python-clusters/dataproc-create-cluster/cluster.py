@@ -49,12 +49,9 @@ class MyCluster(Cluster):
             clusterBody["config"]["gceClusterConfig"]["internalIpOnly"] = self.config.get("gcloudUseInternalIP")
 
         # set network tags to cluster
-        tagsAsString = self.config.get("tags") 
+        tagsAsString = self.config.get("networkTags") 
         if tagsAsString:
-            netwokTags=[]
-            for tag in tagsAsString.split(","):
-                netwokTags.append(tag)
-            clusterBody["config"]["gceClusterConfig"]["tags"] = netwokTags
+            clusterBody["config"]["gceClusterConfig"]["tags"] = tagsAsString.split(",")
 
 
         clusterBody = self.client.dump(name)

@@ -88,7 +88,7 @@
             "visibilityCondition": "model.gcloudUseCustomSubnet && model.gcloudUseCustomGceConfig == false"
         },
         {
-            "name" : "tags",
+            "name" : "gcloudNetworkTags",
             "label" : "Additional tags",
             "type" : "STRING",
             "mandatory": false,
