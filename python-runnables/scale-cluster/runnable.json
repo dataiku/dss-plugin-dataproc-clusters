@@ -2,7 +2,7 @@
     "meta": {
         "label": "Scale cluster up or down",
         "description": "Changes the number of instances in the CORE instances group",
-        "icon": "icon-cloud"
+        "icon": "icon-gcp-cloud-dataproc icon-cloud"
     },
 
     "impersonate": false,

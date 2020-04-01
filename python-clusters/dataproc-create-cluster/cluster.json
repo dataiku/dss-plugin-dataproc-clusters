@@ -2,20 +2,20 @@
     "meta" : {
         "label" : "Dataproc cluster (create cluster)",
         "description" : "Creates and manages Dataproc clusters",
-        "icon" : "icon-gears"
+        "icon" : "icon-gcp-cloud-dataproc icon-gears"
     },
 
     "params": [
         {
             "name" : "gcloudProjectId",
             "label" : "GCP project ID",
-            "type": "STRING", 
+            "type": "STRING",
             "mandatory" : true
         },
         {
             "name": "gcloudClusterId",
             "label" : "DataProc cluster name",
-            "description": "Identifier of the cluster in GCP project", 
+            "description": "Identifier of the cluster in GCP project",
             "type": "STRING",
             "mandatory" : true
         },
@@ -49,7 +49,7 @@
         {
             "name" : "gcloudRegionId",
             "label" : "Region",
-            "type": "STRING", 
+            "type": "STRING",
             "mandatory" : true,
             "defaultValue": "global",
             "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
@@ -57,7 +57,7 @@
         {
             "name" : "gcloudZoneId",
             "label" : "Zone",
-            "type": "STRING", 
+            "type": "STRING",
             "mandatory" : true,
             "defaultValue": "us-east1-b",
             "visibilityCondition": "model.gcloudUseCustomGceConfig == false"
@@ -219,7 +219,7 @@
             "description" : "Comma-separated list of databases to create upon startup",
             "mandatory" : false
         },
-        
+
         {
             "type" : "SEPARATOR",
             "label":  "Misc"
@@ -231,7 +231,7 @@
             "description" : "GCP labels to add on the cluster"
         }
     ],
-    
+
     "actions" : [
         {
             "id" : "fetch-nodes-keys",
