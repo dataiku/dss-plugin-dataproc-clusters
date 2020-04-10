@@ -59,9 +59,11 @@ class MyCluster(Cluster):
         self.client.dump(name)
 
         clusterBody["config"]["masterConfig"]['machineTypeUri'] = self.config.get("masterInstanceType")
-        clusterBody["config"]["workerConfig"]['machineTypeUri'] = self.config["slaveInstanceType"]
+        clusterBody["config"]["workerConfig"]['machineTypeUri'] = self.config.get("slaveInstanceType")
         clusterBody["config"]["workerConfig"]['numInstances'] = int(self.config["instancesCount"])
-                
+
+        if self.config.get("dataprocVersion") != "LATEST":
+            clusterBody["config"]["softwareConfig"]['imageVersion'] = self.config.get("dataprocVersion")
         
 
         props = {}
