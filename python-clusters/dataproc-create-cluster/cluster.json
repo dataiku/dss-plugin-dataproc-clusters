@@ -26,6 +26,30 @@
             "defaultValue" : "LATEST",
             "mandatory" : false
         },
+
+
+        {
+          "type": "SEPARATOR",
+          "label": "Credentials for deployment"
+        },
+        {
+            "name": "gcloudUseDefaultSvcAccount",
+            "label": "Use Default Service account",
+            "description": "Use your Service account set with your GCP instance or GOOGLE_APPLICATION_CREDENTIALS",
+            "type": "BOOLEAN",
+            "defaultValue": true
+        },
+        {
+            "name": "gcloudGoogleServiceAccountKey",
+            "label": "GCP Private Key",
+            "description": "Paste here the full content of your service account's private key in JSON. it will only be used to manage clusters",
+            "type": "TEXTAREA",
+            "mandatory" : true,
+            "defaultValue": "{}",
+            "visibilityCondition": "model.gcloudUseDefaultSvcAccount == false"
+        },
+
+
         {
           "type": "SEPARATOR",
           "label": "Network"

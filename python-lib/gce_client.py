@@ -60,7 +60,7 @@ class AbstractGCloudClient:
 
 
 class DataProcClient(AbstractGCloudClient):
-    imageVersion = "1.4.24-deb9" #"1.3.9-deb9"
+    imageVersion = "1.4-debian" #"1.3.9-deb9"
     credentials=None
     serviceName=None
     numberOfMaster = 1

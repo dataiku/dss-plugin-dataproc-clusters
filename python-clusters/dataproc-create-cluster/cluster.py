@@ -18,10 +18,15 @@ class MyCluster(Cluster):
 
     def __init_client__(self):
         logging.info("loading dataproc client")
+
         if not self.client:
-            self.client = DataProcClient(self.config["gcloudProjectId"],asumeDefaultCredentials=True)
-            self.client.region = self.config.get("gcloudRegionId")
-            self.client.zone = self.config.get("gcloudZoneId")
+            self.client = DataProcClient(self.config.get("gcloudProjectId")
+                ,asumeDefaultCredentials=self.config.get("gcloudUseDefaultSvcAccount")
+                ,service_account_details=self.config.get("gcloudGoogleServiceAccountKey")
+                )
+
+        self.client.region = self.config.get("gcloudRegionId")
+        self.client.zone = self.config.get("gcloudZoneId")
 
         return
         
@@ -64,7 +69,6 @@ class MyCluster(Cluster):
 
         if self.config.get("dataprocVersion") != "LATEST":
             clusterBody["config"]["softwareConfig"]['imageVersion'] = self.config.get("dataprocVersion")
-        
 
         props = {}
         if self.config["metastoreDBMode"] == "CUSTOM_JDBC":
