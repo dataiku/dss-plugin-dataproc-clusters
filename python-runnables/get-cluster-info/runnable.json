@@ -2,7 +2,7 @@
     "meta": {
         "label": "Get Dataproc cluster info",
         "description": "Gets sizing information about the Dataproc cluster",
-        "icon": "icon-cloud"
+        "icon": "icon-gcp-cloud-dataproc icon-cloud"
     },
 
     "impersonate": false,
