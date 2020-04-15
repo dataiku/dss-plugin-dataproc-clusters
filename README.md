@@ -11,6 +11,13 @@ You can deploy a compatible instance from Dataiku for Dataproc solution on Googl
 
 ## Changelog
 
+
+
+**Version 2.0.0  (2020-03-02)**
+* Support for private ip adresses 
+* Support for custom and multi project VPC
+* Full custom custer configuration available 
+
 **Version 1.0.2 (2019-12-10)**
 * Version bump for updated support level
 
