@@ -1,4 +1,4 @@
-PLUGIN_VERSION=1.0.2
+PLUGIN_VERSION=2.0.1
 PLUGIN_ID=dataproc-clusters
 
 plugin:
