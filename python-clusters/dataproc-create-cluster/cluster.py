@@ -22,7 +22,7 @@ class MyCluster(Cluster):
         if not self.client:
             self.client = DataProcClient(self.config.get("gcloudProjectId")
                 ,asumeDefaultCredentials=self.config.get("gcloudUseDefaultSvcAccount")
-                ,service_account_details=self.config.get("gcloudGoogleServiceAccountKey")
+                ,service_account_details=json.loads(self.config.get("gcloudGoogleServiceAccountKey"))
                 )
 
         self.client.region = self.config.get("gcloudRegionId")
