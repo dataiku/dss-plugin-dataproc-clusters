@@ -1,6 +1,7 @@
 import os,sys
 import googleapiclient.discovery
 from google.auth import compute_engine
+from google.oauth2 import service_account
 import random
 import logging
 import time
@@ -70,6 +71,8 @@ class DataProcClient(AbstractGCloudClient):
     def __init__ (self,project,asumeDefaultCredentials=False,service_account_details=None,service_account_file=None):
         self.apiVersion = "v1"
         self.projectId = project
+        self.assumeDefaultCredentials = asumeDefaultCredentials
+        self.service_account_details = service_account_details
 
         # client 
         if asumeDefaultCredentials:
@@ -300,7 +303,7 @@ class DataProcClient(AbstractGCloudClient):
     def getDataprocClusterByName(self,name):
         return self.__lookup__(name)
     def forkComputeClient(self):
-        computeClient = GcloudComputeClient(asumeDefaultCredentials=True)
+        computeClient = GcloudComputeClient(asumeDefaultCredentials=self.assumeDefaultCredentials, service_account_details=self.service_account_details)
         computeClient.region = self.region
         computeClient.zone = self.zone
         computeClient.projectId = self.projectId
