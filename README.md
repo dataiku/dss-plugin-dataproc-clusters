@@ -11,6 +11,9 @@ You can deploy a compatible instance from Dataiku for Dataproc solution on Googl
 
 ## Changelog
 
+**Version 2.0.2 (2020-09-09)**
+* Fix issue when using non-default service account
+
 **Version 2.0.1  (2020-04-14)**
 * support for service credentials at cluster level 
 
