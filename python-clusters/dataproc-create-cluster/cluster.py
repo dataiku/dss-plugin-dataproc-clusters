@@ -78,7 +78,7 @@ class MyCluster(Cluster):
                 "javax.jdo.option.ConnectionUserName": self.config["metastoreJDBCUser"],
                 "javax.jdo.option.ConnectionPassword": self.config["metastoreJDBCPassword"],
             }
-            logging.imfo(" setting hive metastore for custom JDBC")
+            logging.info(" setting hive metastore for custom JDBC")
             self.client.setHiveConfToClusterDef(clusterBody,props)
         elif self.config["metastoreDBMode"] == "MYSQL":
             props = {
@@ -87,7 +87,7 @@ class MyCluster(Cluster):
                 "javax.jdo.option.ConnectionUserName": self.config["metastoreMySQLUser"],
                 "javax.jdo.option.ConnectionPassword": self.config["metastoreMySQLPassword"]
             }
-            logging.imfo(" setting hive metastore for MySQL")
+            logging.info(" setting hive metastore for MySQL")
             self.client.setHiveConfToClusterDef(clusterBody,props)
         elif self.config["metastoreDBMode"] == "GCLOUD_SQL":
             self.client.setHiveMetastoreToGoogleSql(clusterBody,instanceName,projectId=None,region=None,extraProps={})

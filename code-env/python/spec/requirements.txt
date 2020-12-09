@@ -3,3 +3,4 @@ google-auth
 google-cloud
 google-api-python-client
 googleapis-common-protos
+oauth2client
