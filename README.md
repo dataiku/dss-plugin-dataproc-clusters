@@ -1,5 +1,7 @@
 # DATAPROC-MULTICLUSTERS
 
+⚠️ Starting with DSS version 14 this plugin is considered \"deprecated\" (cf deprecation notice here: https://doc.dataiku.com/dss/latest/hadoop/dynamic-dataproc.html)
+
 With this plugin you will be able to:
 * create, use and delete Google Dataproc clusters in your projects
 * use an existing cluster on your GCP project
